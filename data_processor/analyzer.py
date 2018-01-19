@@ -1,5 +1,6 @@
 file_path = r"C:\work\law_pre\data_processor\result\result.txt"
 crit_path = r"C:\work\law_pre\data_processor\accusation_list2.txt"
+crit_path = r"accusation_list2.txt"
 f = open(file_path, "r")
 
 import json
