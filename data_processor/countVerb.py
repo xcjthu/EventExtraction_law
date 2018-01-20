@@ -31,6 +31,7 @@ def analyse():
     for i in range(20):
         fin = open(inpath + str(i), 'r')
         line = fin.readline()
+        num = 0
         while line:
             line = json.loads(line)
             if 'AJJBQK' in line['document']:
@@ -40,12 +41,17 @@ def analyse():
                 for s in sentences:
                     verbs = analyseSentence(s)
                     for a in accusation:
-                        for v in verbs:
-                            if v in verbInAccusation[a]:
-                                verbInAccusation[a][v] += 1
-                            else:
-                                verbInAccusation[a][v] = 1
+                        if a in verbInAccusation:
+                            for v in verbs:
+                                if v in verbInAccusation[a]:
+                                    verbInAccusation[a][v] += 1
+                                else:
+                                    verbInAccusation[a][v] = 1
             line = fin.readline()
+            if num % 1000 == 0:
+                print(v)
+                print(num)
+            num += 1
         break
 
     fout = open('result.txt', 'w')
