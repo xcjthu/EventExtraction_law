@@ -2,7 +2,7 @@ import json
 import os
 import thulac
 
-inpath = '../law_pre/predict_data1/'
+inpath = '/home/xcj/law_pre/predict_data1/'
 outpath = 'dataToLabel.json'
 
 getNum = 400
