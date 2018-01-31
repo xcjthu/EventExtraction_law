@@ -51,13 +51,13 @@ class Transform():
         with open(config.get('path', 'partOfSpeechPath'), 'rb') as fin:
             self.partOfSpeech = pickle.load(fin)
         self.zero = np.zeros(self.wordVecSize + config.getint('feature', 'partOfSpeechSize'))
-        print(self.partOfSpeech)
+        #print(self.partOfSpeech)
 
     def wordVec(self, word):
         try:
-            return np.concatenate([self.getWordVec.vec[self.word2id[word[0]]].astype(dtype=np.float32), self.partOfSpeech[word[1]]])
+            return np.concatenate([self.getWordVec.vec[self.getWordVec.word2id[word[0]]].astype(dtype=np.float32), self.partOfSpeech[word[1]]])
         except:
-            return np.concatenate([self.getWordVec.vec[self.word2id['UNK']].astype(dtype=np.float32), np.zeros(config.getint('feature', 'partOfSpeechSize'))])
+            return np.concatenate([self.getWordVec.vec[self.getWordVec.word2id['UNK']].astype(dtype=np.float32), np.zeros(config.getint('feature', 'partOfSpeechSize'))])
 
     def getFeature(self, sentence, k):
         '''type(sentence) == list   get the feature of kth word in the sentence'''
@@ -75,4 +75,3 @@ if __name__ == '__main__':
     l = [['佛山市', 'ns', 0], ['顺德区', 'ns', 0], ['人民', 'n', 0], ['检察院', 'n', 0], ['指控', 'v', 0], ['称', 'v', 0], ['，', 'w', 0], ['2014年', 't', 0], ['12月', 't', 0], ['28日', 't', 0], ['23时', 't', 0], ['许', 'm', 0], ['，', 'w', 0], ['在', 'p', 0], ['佛山市', 'ns', 6], ['顺德区', 'ns', 6]]
     transformer = Transform()
     print(transformer.getFeature(l, 0))
-
