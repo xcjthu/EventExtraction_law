@@ -20,6 +20,7 @@ def analyseSentence(sentence):
             for v in m:
                 if v[1] == 'v':
                    ans.append(v[0])
+    #print(ans)
     return ans
 
 
@@ -47,16 +48,19 @@ def analyse():
                                     verbInAccusation[a][v] += 1
                                 else:
                                     verbInAccusation[a][v] = 1
+                    #if num % 1000 == 0:
+                    #    print(verbs)
+                if num % 1000 == 0:
+                    print(num)
+                num += 1
+            if num == 10000:
+                break
             line = fin.readline()
-            if num % 1000 == 0:
-                print(v)
-                print(num)
-            num += 1
-        break
 
-    fout = open('result.txt', 'w')
+        break
+    fout = open('result1.txt', 'w')
     print(json.dumps(verbInAccusation), file = fout)
 
 
-if __name__ == '__main__':
-    analyse()
+print('begin')
+analyse()
