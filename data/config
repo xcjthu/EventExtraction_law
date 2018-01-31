@@ -1,0 +1,9 @@
+[path]
+word_dic = /home/guozhipeng/law/word2id.pkl
+wordVec_path = /home/guozhipeng/law/vec_nor.npy
+partOfSpeechPath = partOfSpeechPath.pkl
+
+[feature]
+n-gram = 5
+partOfSpeechSize = 10
+wordVecSize = 200
