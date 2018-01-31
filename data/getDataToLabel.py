@@ -21,6 +21,7 @@ def get(num):
             line = json.loads(line)
             ans = []
             if line['meta']['crit'] != 16 and line['meta']['crit'] != 19:
+                line = fin.readline()
                 continue
             for s in line['content']:
                 sentence = ''.join(s)
